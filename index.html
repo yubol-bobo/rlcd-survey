@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#164dde">
+  <title>Calibration-Aware RL for LLMs · Survey</title>
+  <meta name="description" content="A survey of calibration-aware reinforcement learning for large language models: connecting probability targets, objectives, implemented updates, and decision-making.">
+  <meta property="og:title" content="Calibration-Aware Reinforcement Learning for Large Language Models">
+  <meta property="og:description" content="A survey of objectives, optimization, and decision-making. Yubo Li, Yidi Miao, Ramayya Krishnan, and Rema Padman · Carnegie Mellon University.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yubol-bobo.github.io/rlcd-survey/">
+  <meta name="citation_title" content="Calibration-Aware Reinforcement Learning for Large Language Models: A Survey of Objectives, Optimization, and Decision-Making">
+  <meta name="citation_author" content="Yubo Li">
+  <meta name="citation_author" content="Yidi Miao">
+  <meta name="citation_author" content="Ramayya Krishnan">
+  <meta name="citation_author" content="Rema Padman">
+  <meta name="citation_publication_date" content="2026/09/21">
+  <meta name="citation_pdf_url" content="https://yubol-bobo.github.io/rlcd-survey/pdf/calibration-aware-rl-survey.pdf">
+  <link rel="canonical" href="https://yubol-bobo.github.io/rlcd-survey/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Caladea-Italic.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#overview">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="wordmark" href="#top" aria-label="Calibration-aware RL survey home"><span class="brand-symbol" aria-hidden="true">c<span>↗</span></span>CALIBRATION<span class="wordmark-divider">/</span>RL</a>
+      <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#methods">Methods</a><a href="#insight">Insight</a><a class="nav-paper" href="pdf/calibration-aware-rl-survey.pdf">Read the paper <span aria-hidden="true">↗</span></a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="paper-title">
+      <div class="eyebrow"><span class="blue-rule" aria-hidden="true"></span><span>A RESEARCH SURVEY</span><span class="eyebrow-dot">·</span><span class="eyebrow-institution">CARNEGIE MELLON UNIVERSITY</span></div>
+      <h1 id="paper-title"><em>Calibration-Aware</em><br>Reinforcement Learning<span class="title-last">for Large Language Models</span></h1>
+      <p class="subtitle">A Survey of Objectives, Optimization, and Decision-Making</p>
+      <p class="authors"><span>Yubo Li</span><span>Yidi Miao</span><span>Ramayya Krishnan</span><span>Rema Padman</span></p>
+      <p class="affiliation">Carnegie Mellon University</p>
+      <div class="hero-actions"><a class="button primary" href="pdf/calibration-aware-rl-survey.pdf">Read the paper <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a class="button secondary" href="https://github.com/yubol-bobo/rlcd-survey"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 4H5v16h14V4h-3M9 3h6v4H9zM9 12h6M9 16h4"/></svg>Project repository</a></div>
+      <div class="hero-meta"><span>21 September 2026</span><span>Literature snapshot: 20 September 2026</span></div>
+      <div class="pipeline" aria-label="The survey connects probability targets, objectives, implemented updates, and decisions">
+        <div><span class="step-number">01</span><span>Probability targets</span><small>What does the number mean?</small></div><span class="pipeline-arrow" aria-hidden="true">→</span>
+        <div><span class="step-number">02</span><span>Objectives</span><small>What does the reward elicit?</small></div><span class="pipeline-arrow" aria-hidden="true">→</span>
+        <div><span class="step-number">03</span><span>Optimization</span><small>What does the update preserve?</small></div><span class="pipeline-arrow" aria-hidden="true">→</span>
+        <div><span class="step-number">04</span><span>Decision-making</span><small>When is the report useful?</small></div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="overview" aria-labelledby="overview-title">
+      <div class="section-label"><span>01 / OVERVIEW</span><span class="section-line"></span></div>
+      <div class="overview-grid">
+        <h2 id="overview-title">Confidence is a number.<br><em>Its meaning is a contract.</em></h2>
+        <div class="overview-copy"><p>Reinforcement learning can change both what a language model says and the confidence it expresses. This survey follows probability claims from their targets and training objectives through implemented updates to downstream decisions.</p><p>We bring together calibration-aware RL and its supervised and post-hoc comparators, asking when learned reports retain the statistical meaning that decisions require.</p></div>
+      </div>
+      <div class="evidence-strip"><p><strong>14</strong><span>learning families in Table 2</span></p><p><strong>52</strong><span>source records in Appendix B</span></p><p><strong>106</strong><span>references across the survey</span></p></div>
+      <div class="insights-grid">
+        <article><span class="small-index">I</span><h3>Reporting ≠ capability</h3><p>An incentive for truthful confidence need not favor the policy with the highest average accuracy.</p><a class="text-link" href="pdf/calibration-aware-rl-survey.pdf#page=10">Objectives · Section 3 <span aria-hidden="true">↗</span></a></article>
+        <article><span class="small-index">II</span><h3>Score ≠ update</h3><p>Normalization, token masks, finite rollouts, and direct reward gradients shape the learning rule actually used.</p><a class="text-link" href="pdf/calibration-aware-rl-survey.pdf#page=14">Optimization · Section 4 <span aria-hidden="true">↗</span></a></article>
+        <article><span class="small-index">III</span><h3>Ranking ≠ decision value</h3><p>Good ordering can support selection at fixed coverage while failing at a transferred probability threshold.</p><a class="text-link" href="#insight">See the decision example <span aria-hidden="true">↓</span></a></article>
+      </div>
+      <figure class="figure-shell overview-figure">
+        <a class="figure-link" href="assets/probability-claims.webp" target="_blank" rel="noopener" aria-label="Open Figure 2: What does 0.80 mean? at full size"><img src="assets/probability-claims.webp" width="1774" height="887" loading="lazy" alt="A reported probability of 0.80 can describe an external event, the correctness of one realized answer, or success under a sampling policy. Target, feedback, objective, update, and decision are connected by conditions that need checking."></a>
+        <figcaption><span class="figure-number">FIG. 2</span><div><strong>The same number can make different claims.</strong> The event and information set define the probability target. Each step from feedback to decision introduces conditions to check.<a class="figure-full" href="assets/probability-claims.webp" target="_blank" rel="noopener">View full size <span aria-hidden="true">↗</span></a></div></figcaption>
+      </figure>
+    </section>
+
+    <section class="methods-section" id="methods" aria-labelledby="methods-title"><div class="wrap section">
+      <div class="section-label"><span>02 / THE METHOD LANDSCAPE</span><span class="section-line"></span></div>
+      <div class="section-heading"><div><h2 id="methods-title">Compare what is learned.</h2><p class="section-intro">The scored object, learning intervention, and decision semantics matter as much as the optimizer’s name.</p></div><a class="text-link" href="pdf/calibration-aware-rl-survey.pdf#page=8">Full comparison · Table 2 <span aria-hidden="true">↗</span></a></div>
+      <p class="table-scope">Eight representative families from the survey. This is a conceptual comparison, not a benchmark leaderboard.</p>
+      <p class="mobile-table-hint">Scroll horizontally to compare all four columns <span aria-hidden="true">↔</span></p>
+      <div class="table-scroll" role="region" aria-label="Comparison of eight representative learning families" tabindex="0">
+        <table><caption class="visually-hidden">Selected learning families, targets, interventions, and decision implications, adapted from Table 2.</caption><colgroup><col class="family-col"><col><col><col></colgroup><thead><tr><th scope="col">Family / examples</th><th scope="col">What is scored</th><th scope="col">Learning intervention</th><th scope="col">Decision implication</th></tr></thead><tbody>
+<tr><th scope="row"><strong>External events</strong><span class="method-examples"><a href="https://arxiv.org/abs/2608.28482" title="Forecasting (P001)">Forecasting</a></span></th><td>Event probabilities, scored against resolved outcomes.</td><td>Update the reporting policy while the event definition stays fixed.</td><td>Assess reliability and proper scores on held-out events.</td></tr>
+<tr><th scope="row"><strong>Fixed-answer confidence</strong><span class="method-examples"><a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/bf8065446507b0d3842838564ac4f1f3-Abstract-Conference.html" title="Rewarding Doubt (P011)">Rewarding Doubt</a></span></th><td>Supplied-answer correctness, using a clipped log-score reward.</td><td>Generate confidence with the answer held as input.</td><td>Isolates reporting from answer choice during training.</td></tr>
+<tr><th scope="row"><strong>Joint answer and confidence</strong><span class="method-examples"><a href="https://proceedings.iclr.cc/paper_files/paper/2026/hash/615675cc6e94ddb1a783904fb178b5f6-Abstract-Conference.html" title="RLCR (P010)">RLCR</a> · <a href="https://arxiv.org/abs/2511.14275" title="VPD (P067)">VPD</a></span></th><td>Selected-answer confidence; correctness and report-error rewards.</td><td>Update answers and confidence together.</td><td>Reporting and capability interact. Vector output may receive scalar supervision.</td></tr>
+<tr><th scope="row"><strong>Relative ordering</strong><span class="method-examples"><a href="https://arxiv.org/abs/2607.03528" title="RLSR (P030)">RLSR</a></span></th><td>Correctness order through rank-weighted selective-risk rewards.</td><td>Change confidence ordering.</td><td>Supports fixed-coverage selection; the probability scale remains unidentified.</td></tr>
+<tr><th scope="row"><strong>Selective actions</strong><span class="method-examples"><a href="https://icml.cc/virtual/2026/poster/63785" title="TruthRL (P020)">TruthRL</a></span></th><td>Answer/abstain behavior under ternary utilities.</td><td>Update the action policy under the chosen reward.</td><td>Evaluate utility and coverage. Action likelihood is not correctness confidence.</td></tr>
+<tr><th scope="row"><strong>Predictive distributions</strong><span class="method-examples"><a href="https://arxiv.org/abs/2605.20740" title="DAR (P078)">DAR</a></span></th><td>A finite set of generated numerical outcomes, scored with empirical CRPS.</td><td>Leave-one-out credit and group-standardized RL.</td><td>Distinguish the scored finite set from its generating distribution.</td></tr>
+<tr><th scope="row"><strong>Supervised confidence†</strong><span class="method-examples"><a href="https://doi.org/10.52202/085713-1783" title="ConfTuner (P009)">ConfTuner</a></span></th><td>Fixed-answer correctness through semantic report error.</td><td>Directly fit confidence tokens.</td><td>Tests whether rollout RL adds value beyond supervised reporting.</td></tr>
+<tr><th scope="row"><strong>Post-hoc calibration†</strong><span class="method-examples"><a href="https://proceedings.mlr.press/v70/guo17a.html" title="Temperature scaling (P055)">Temperature scaling</a></span></th><td>Fixed-logit class probabilities under held-out likelihood loss.</td><td>Fit a scalar temperature with the generator fixed.</td><td>Rescales probabilities and preserves class argmax; needs representative calibration data.</td></tr>
+        </tbody></table>
+      </div>
+      <div class="table-note"><p><sup>†</sup> Comparator without online rollout-reward training. Examples link to their primary papers.</p><a class="text-link" href="pdf/calibration-aware-rl-survey.pdf#page=39">All 52 source records · Appendix B <span aria-hidden="true">↗</span></a></div>
+    </div></section>
+
+    <section class="section wrap" id="insight" aria-labelledby="insight-title">
+      <div class="section-label"><span>03 / A CLOSER LOOK</span><span class="section-line"></span></div>
+      <div class="section-heading insight-heading"><div><h2 id="insight-title">Same ranking.<br><em>A different decision.</em></h2></div><p class="section-intro">A strictly increasing transformation preserves which answers rank highest. It can still change which answers cross a fixed probability threshold—and reverse their utility.</p></div>
+      <figure class="figure-shell">
+        <a class="figure-link" href="assets/decision-thresholds.webp" target="_blank" rel="noopener" aria-label="Open Figure 6: the decision threshold example at full size"><img src="assets/decision-thresholds.webp" width="1774" height="887" loading="lazy" alt="An exact four-context example compares truthful confidence with sharpened scores. At the same threshold of 0.8, truthful reports accept only context D, while sharpened scores also accept context C. Both have the same ranking but different risk and utility."></a>
+        <figcaption><span class="figure-number">FIG. 6</span><div><strong>A threshold carries a probability assumption.</strong> At threshold 0.8 with payoffs +1 / −4 / 0, truthful reports yield utility +0.125 per input; sharpened scores yield −0.125. Selecting a new threshold of 0.95 restores the original accepted set.<a class="figure-full" href="assets/decision-thresholds.webp" target="_blank" rel="noopener">View full size <span aria-hidden="true">↗</span></a></div></figcaption>
+      </figure>
+      <div class="analytic-note"><span class="note-mark" aria-hidden="true">↳</span><p><strong>An exact analytic construction, not an LLM experiment.</strong> Four equally weighted contexts have correctness rates (0.1, 0.4, 0.6, 0.9). Both reporters have AUROC 0.825. The example isolates the difference between ranking, calibration, and decision utility; it does not establish an empirical advantage for a training method.</p></div>
+    </section>
+
+    <section class="paper-section" id="paper" aria-labelledby="paper-section-title"><div class="wrap paper-grid">
+      <div><div class="section-label"><span>04 / PAPER & RESOURCES</span></div><h2 id="paper-section-title">The full argument.<br><em>With the details intact.</em></h2><p>Read the synthesis, mathematical analyses, method inventory, and implementation qualifications in one manuscript.</p><div class="hero-actions"><a class="button primary" href="pdf/calibration-aware-rl-survey.pdf" download>Download PDF <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v5h14v-5"/></svg></a><a class="text-link" href="https://github.com/yubol-bobo/rlcd-survey">View repository <span aria-hidden="true">↗</span></a></div><p class="paper-details">59 pages · Manuscript dated 21 September 2026</p></div>
+      <div class="citation-block"><div class="citation-header"><h3>Cite this survey</h3><button type="button" id="copy-citation" aria-label="Copy BibTeX citation">Copy BibTeX <span aria-hidden="true">⧉</span></button></div><pre><code id="citation-text">@misc{li2026calibrationaware,
+  title = {Calibration-Aware Reinforcement
+    Learning for Large Language Models:
+    A Survey of Objectives, Optimization,
+    and Decision-Making},
+  author = {Li, Yubo and Miao, Yidi and
+    Krishnan, Ramayya and Padman, Rema},
+  year = {2026},
+  url = {https://yubol-bobo.github.io/rlcd-survey/}
+}</code></pre><div class="citation-bottom"><a href="citation.bib" download>Download .bib <span aria-hidden="true">↗</span></a><span id="copy-status" role="status" aria-live="polite"></span></div></div>
+    </div></section>
+  </main>
+  <footer class="wrap"><p>Calibration-Aware RL for LLMs</p><p>Yubo Li · Yidi Miao · Ramayya Krishnan · Rema Padman</p><a href="#top">Back to top <span aria-hidden="true">↑</span></a></footer>
+</body>
+</html>
