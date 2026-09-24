@@ -7,7 +7,7 @@ Carnegie Mellon University · 21 September 2026
 
 - [Project website](https://yubol-bobo.github.io/rlcd-survey/)
 - [Full abstract and paper details](https://yubol-bobo.github.io/rlcd-survey/paper.html)
-- [Read the manuscript](pdf/calibration-aware-rl-survey.pdf)
+- [Read the manuscript on CMU KiltHub](https://kilthub.cmu.edu/articles/preprint/Calibration-Aware_Reinforcement_Learning_for_Large_Language_Models_A_Survey_of_Objectives_Optimization_and_Decision-Making/33989641?file=69317431)
 - [Original high-resolution PDF](pdf/calibration-aware-rl-survey-original.pdf)
 - [BibTeX](citation.bib)
 
@@ -20,7 +20,7 @@ The site uses plain HTML, CSS, and a small JavaScript file. It has no runtime de
 | Path | Purpose |
 | --- | --- |
 | `index.html` | English project page and method comparison |
-| `paper.html` | Full abstract, bibliographic metadata, and direct PDF links |
+| `paper.html` | Full abstract, bibliographic metadata, and KiltHub reading link |
 | `styles.css` | Responsive page styling |
 | `paper.css` | Compact article-page styling |
 | `script.js` | Citation copy and navigation state |
@@ -47,11 +47,11 @@ Open `http://localhost:8000/`. The site also works under the GitHub Pages projec
 
 In repository **Settings → Pages**, select **GitHub Actions** as the source. A push to `main` runs the included deployment workflow. It publishes only the allowlisted site files, figures, font license, citation, and paper.
 
-To update the manuscript, preserve its high-resolution original and prepare a searchable web PDF below 5,000,000 bytes. Retain the PDF's text and links; do not rasterize pages. Update the full abstract, date, page count, citation metadata and structured data in `paper.html`, together with the visible date, page count, citation, and section/page links in `index.html`. Keep `citation.bib` and the on-page BibTeX synchronized. Update sitemap `lastmod` dates only when the corresponding resources change. The website summaries are curated from Table 2; preserve the distinction between probability targets, ranking, and action likelihoods when editing them.
+To update the manuscript, preserve its high-resolution original and prepare a searchable web PDF below 5,000,000 bytes. Retain the PDF's text and links; do not rasterize pages. Update the full abstract, date, page count, citation metadata and structured data in `paper.html`, together with the visible date, page count, citation, and manuscript links in `index.html`. Keep the KiltHub reading links synchronized across both pages and this README. Keep `citation.bib` and the on-page BibTeX synchronized. Update sitemap `lastmod` dates only when the corresponding resources change. The website summaries are curated from Table 2; preserve the distinction between probability targets, ranking, and action likelihoods when editing them.
 
 ## Search discovery
 
-The article landing page supplies Highwire `citation_*` tags and a same-site absolute `citation_pdf_url`, plus a visible full abstract and direct links. The primary PDF is below Google Scholar's documented 5 MB file limit. These changes improve eligibility for crawling and parsing; they do not guarantee indexing or a particular search ranking.
+Visible manuscript links open the CMU KiltHub preprint file page. The article landing page supplies Highwire `citation_*` tags, a same-site absolute `citation_pdf_url`, and a visible full abstract. Machine-readable PDF metadata and the sitemap retain the actual searchable local PDF mirror; the KiltHub HTML preview URL is not labeled as a direct PDF. The primary PDF is below Google Scholar's documented 5 MB file limit. These changes improve eligibility for crawling and parsing; they do not guarantee indexing or a particular search ranking.
 
 In Google Search Console, verify the URL-prefix property `https://yubol-bobo.github.io/rlcd-survey/` (or use an already verified parent property). The HTML meta-tag verification method can be added to `index.html` once the owner obtains their token. No verification token is fabricated or bundled. Then submit `https://yubol-bobo.github.io/rlcd-survey/sitemap.xml` and inspect/request indexing for the project and article pages and the PDF.
 
