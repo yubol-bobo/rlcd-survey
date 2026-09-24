@@ -5,7 +5,8 @@ import shutil
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / '_site'
 OUT.mkdir(exist_ok=True)
-for name in ('index.html', 'styles.css', 'script.js', 'citation.bib', '.nojekyll'):
+for name in ('index.html', 'paper.html', 'styles.css', 'paper.css', 'script.js',
+             'citation.bib', 'sitemap.xml', '.nojekyll'):
     shutil.copy2(ROOT / name, OUT / name)
 for name in ('assets', 'pdf'):
     shutil.copytree(ROOT / name, OUT / name, dirs_exist_ok=True)

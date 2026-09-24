@@ -1,0 +1,46 @@
+/* Compact, directly readable article landing page. */
+.paper-page .site-header { position: static; }
+.paper-page .nav-wrap { height: 64px; max-width: 1040px; }
+.paper-page .publication {
+  width: min(1040px, calc(100% - 64px));
+  margin: 28px auto 56px;
+}
+.paper-page .publication-kind {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.paper-page h1 {
+  font-size: clamp(25px, 2.7vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -.025em;
+  margin: 12px 0 16px;
+  font-weight: 600;
+}
+.paper-page .publication-authors { font-size: 16px; font-weight: 550; }
+.paper-page .publication-meta { font-size: 13px; color: var(--muted); margin-top: 5px; }
+.paper-page .abstract { margin-top: 24px; }
+.paper-page .abstract h2 { font-size: 19px; letter-spacing: -.01em; margin-bottom: 10px; }
+.paper-page .abstract p { font-size: 16px; line-height: 1.7; color: #33445a; }
+.paper-page .publication-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  border-block: 1px solid var(--line);
+  padding-block: 20px;
+  margin-top: 25px;
+}
+.paper-page .publication-note { color: var(--muted); font-size: 12px; margin-top: 12px; }
+.paper-page .publication-resources { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 22px; }
+.paper-page .publication-resources a { color: var(--blue); font-size: 14px; }
+.paper-page .publication-resources a:hover { text-decoration: underline; }
+.paper-page footer { border-top: 1px solid var(--line); }
+@media (max-width: 760px) {
+  .paper-page .publication { width: calc(100% - 40px); margin-top: 24px; }
+  .paper-page .publication-authors { font-size: 14px; line-height: 1.7; }
+  .paper-page .abstract p { font-size: 16px; }
+  .paper-page .publication-actions { align-items: flex-start; gap: 12px 18px; }
+}
